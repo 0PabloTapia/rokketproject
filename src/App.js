@@ -1,23 +1,55 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from 'react';
+import Form from './components/Form';
+import ImagesList from './components/ImagesList';
 
 function App() {
+
+  const [search, setSearch] = useState('');
+  const [images, setImages ] = useState([])
+
+ useEffect(() => {
+    const APIcall = async () => {
+      if(search === '') return;
+
+      const resultsPerPage = 30;
+      const key = '5fce9865cbd2f94055cc6b2b'
+      const url = 'https://dummyapi.io/data/api'
+
+        const response = await fetch(`${url}/tag/${search}/post?&limit=10`, { headers: { 'app-id': key }  });
+        const result = await response.json();
+
+        setImages(result.data)
+
+    }
+
+    APIcall();
+  }, [search])
+
+  // const response = await fetch(`${url}/tag/${search}/post?&limit=10`, { headers: { 'app-id': key }  });
+  // const result = await response.json();
+
+  // setSearch(result)
+
+  //  await axios(`${url}/tag/${search}/post?limit=10`, { headers: { 'app-id': key }  })
+      // .then(({ data }) => setSearch(data))
+      // .catch(console.error)
+      // return;
+
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="Container">
+      <div className="jumbotron">
+          <p className="lead text-center"> Rokket Search </p>
+
+          <Form 
+            setSearch={setSearch}
+            />
+      </div>
+      <div className="row justify-content-center">
+        <ImagesList 
+          images={images}
+        />
+      </div>
     </div>
   );
 }
