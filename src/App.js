@@ -11,15 +11,14 @@ function App() {
     const APIcall = async () => {
       if(search === '') return;
 
-      const resultsPerPage = 30;
       const key = '5fce9865cbd2f94055cc6b2b'
       const url = 'https://dummyapi.io/data/api'
 
-        const response = await fetch(`${url}/tag/${search}/post?&limit=10`, { headers: { 'app-id': key }  });
+        const response = await fetch(`${url}/tag/${search}/post`, { headers: { 'app-id': key }  });
         const result = await response.json();
 
         setImages(result.data)
-
+        console.log(result)
     }
 
     APIcall();
