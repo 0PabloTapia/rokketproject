@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import Form from './components/Form';
 import ImagesList from './components/ImagesList';
 import Spinner from './components/Spinner';
-
+import { FaRocket } from 'react-icons/fa';
+import './App.css'
 
 function App() {
 
@@ -38,7 +39,7 @@ function App() {
   return (
     <div className="Container">
       <div className="jumbotron">
-          <p className="lead text-center"> Rokket Search </p>
+          <p className="lead text-center size"> Rokket Search <FaRocket /> </p>
 
           <Form 
             setSearch={setSearch}

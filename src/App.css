@@ -1,0 +1,23 @@
+.size {
+    font-size: 2.5rem;
+    color: #614AE0;
+    font-weight: 500;
+    margin-right: 5rem;
+    font-family: 'Dosis', sans-serif;
+}
+
+.styling {
+    font-family: 'Dosis', sans-serif;
+    border-radius: 2rem;
+    background-color: #614AE0;
+}
+
+.cardtext-styling {
+    font-family: 'Roboto', sans-serif;
+}
+
+.cardtext-likes {
+    color: #30E4BE;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bolder;
+}
