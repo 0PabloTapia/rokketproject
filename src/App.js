@@ -1,11 +1,16 @@
 import { useState, useEffect } from 'react';
 import Form from './components/Form';
 import ImagesList from './components/ImagesList';
+import Spinner from './components/Spinner';
+
 
 function App() {
 
   const [search, setSearch] = useState('');
   const [images, setImages ] = useState([])
+
+  //State para cargar el spinner
+  const [loading, setLoading] = useState(false)
 
  useEffect(() => {
     const APIcall = async () => {
@@ -17,23 +22,18 @@ function App() {
         const response = await fetch(`${url}/tag/${search}/post`, { headers: { 'app-id': key }  });
         const result = await response.json();
 
-        setImages(result.data)
-        console.log(result)
+      setLoading(true)
+        
+        setTimeout(() => {
+          setLoading(false)
+          setImages(result.data)  
+        }, 2000);
     }
 
     APIcall();
   }, [search])
 
-  // const response = await fetch(`${url}/tag/${search}/post?&limit=10`, { headers: { 'app-id': key }  });
-  // const result = await response.json();
-
-  // setSearch(result)
-
-  //  await axios(`${url}/tag/${search}/post?limit=10`, { headers: { 'app-id': key }  })
-      // .then(({ data }) => setSearch(data))
-      // .catch(console.error)
-      // return;
-
+  const loadingSearch = (loading) ? <Spinner /> : <ImagesList images={images} />
   
   return (
     <div className="Container">
@@ -45,9 +45,7 @@ function App() {
             />
       </div>
       <div className="row justify-content-center">
-        <ImagesList 
-          images={images}
-        />
+        {loadingSearch}
       </div>
     </div>
   );
