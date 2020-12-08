@@ -21,3 +21,10 @@
     font-family: 'Roboto', sans-serif;
     font-weight: bolder;
 }
+
+.triangle {
+    border-top: 50px solid#F9F8FC;
+    border-right: 50px solid transparent;
+    border-left: 50px solid transparent;
+    margin-left: 44%;
+}

@@ -40,11 +40,11 @@ function App() {
     <div className="Container">
       <div className="jumbotron">
           <p className="lead text-center size"> Rokket Search <FaRocket /> </p>
-
           <Form 
             setSearch={setSearch}
             />
       </div>
+      <span className="triangle"></span>
       <div className="row justify-content-center">
         {loadingSearch}
       </div>
