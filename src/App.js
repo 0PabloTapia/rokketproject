@@ -8,34 +8,39 @@ import './App.css'
 function App() {
 
   const [search, setSearch] = useState('');
-  const [images, setImages ] = useState([])
-
+  const [images, setImages ] = useState([]);
   //State para cargar el spinner
   const [loading, setLoading] = useState(false)
 
  useEffect(() => {
     const APIcall = async () => {
       if(search === '') return;
-
+      
       const key = '5fce9865cbd2f94055cc6b2b'
       const url = 'https://dummyapi.io/data/api'
 
-        const response = await fetch(`${url}/tag/${search}/post`, { headers: { 'app-id': key }  });
+        const response = await fetch(`${url}/tag/${search}/post?`, { headers: { 'app-id': key }  });
         const result = await response.json();
 
       setLoading(true)
         
         setTimeout(() => {
           setLoading(false)
-          setImages(result.data)  
-        }, 2000);
-    }
+          setImages(result.data)
+          // if(result.data.length === 0) {
+          //   setEmpty(result.data)
+          //   console.log(result.data)
+          //  return 
+          // } 
+        }, 2000);  
 
+       
+      }
     APIcall();
   }, [search])
 
   const loadingSearch = (loading) ? <Spinner /> : <ImagesList images={images} />
-  
+
   return (
     <div className="Container">
       <div className="jumbotron">
@@ -51,5 +56,6 @@ function App() {
     </div>
   );
 }
+        
 
 export default App;

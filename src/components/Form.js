@@ -41,6 +41,7 @@ const Form = ( {setSearch} ) => {
                     />
                 </div>
             </div>
+            
             { error ? <Error message="Agrega algún término de búsqueda" /> : null }
         </form>
     )

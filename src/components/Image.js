@@ -10,7 +10,8 @@ const Image = ({pic}) => {
                 <img src={image}  alt={tags} className="card-img-top"/>
 
                 <div className="card-body card-body-style">
-                    <p className="card-text cardtext-likes">{likes} Likes</p>
+                    <p className="card-text cardtext-tags">#{tags[0]} #{tags[1]} #{tags[2]}</p>
+                    <p className="card-text cardtext-likes"><i class="fas fa-heart"></i> {likes} Likes</p>
                     <p className="card-text cardtext-styling">{text}</p>
                 </div>
 
@@ -20,7 +21,7 @@ const Image = ({pic}) => {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="btn btn-primary btn-block styling"
-                        >About <i class="fas fa-info-circle"></i></a>
+                        ><i class="fas fa-info-circle"></i> About</a>
                 </div>
 
             </div>
